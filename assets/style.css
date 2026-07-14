@@ -310,6 +310,7 @@ h2 {
 }
 
 .research-intro {
+  max-width: 840px;
   margin: 0 auto 70px;
 }
 
