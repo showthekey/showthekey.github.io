@@ -300,7 +300,7 @@ h2 {
 }
 
 .research-image {
-  width: min(100%, 650px);
+  width: min(100%, 670px);
   max-height: 430px;
   margin: 0 auto 50px;
   object-fit: cover;
@@ -308,12 +308,12 @@ h2 {
 }
 
 .research-intro {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto 70px;
 }
 
 .publications {
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
