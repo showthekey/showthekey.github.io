@@ -8,13 +8,25 @@
     <link rel="icon" href="images/favi.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/style.css">
     <style>
-      /* 3列の正方形グリッド設定 */
+      /* ▼メインコンテンツの幅を650pxに制限・中央寄せ▼ */
+      .listing-page {
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      /* ▼3列の正方形グリッド設定▼ */
       .photo-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px 20px;
+        grid-template-columns: repeat(3, 1fr); /* 3等分。余白を除いた幅から自動で写真サイズが決まります */
+        
+        /* 【ここで余白と写真サイズを調整します】 */
+        /* 最初の数字(20px)が「縦の余白」、次の数字(20px)が「横の余白」です。 */
+        /* この数字を大きくすると余白が広がり、相対的に写真のサイズは小さくなります。 */
+        gap: 20px 20px; 
+        
         margin-top: 40px;
       }
+      
       .grid-item {
         cursor: pointer;
       }
@@ -28,17 +40,8 @@
       .grid-item img:hover {
         opacity: 0.8;
       }
-      .grid-item-info {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 8px;
-        font-size: 12px;
-      }
-      .grid-item-info span {
-        color: var(--soft);
-      }
 
-      /* ポップアップ（モーダル）の基本設定 */
+      /* ▼ポップアップ（モーダル）の基本設定▼ */
       .custom-modal {
         display: none;
         position: fixed;
@@ -196,44 +199,26 @@
         
         <div class="grid-item" data-index="0" data-src="images/photos/fieldwork-01.svg" data-date="2024" data-title="Fieldwork 01" data-desc="2024年に行われたフィールド調査の際の記録写真です。ここに詳細な説明文を入力できます。">
           <img src="images/photos/fieldwork-01.svg" alt="Fieldwork 01">
-          <div class="grid-item-info">
-            Fieldwork 01 <span>2024</span>
-          </div>
         </div>
         
         <div class="grid-item" data-index="1" data-src="images/photos/fieldwork-02.svg" data-date="2023" data-title="Fieldwork 02" data-desc="2023年のフィールドワークの記録です。地質構造の観察を行いました。">
           <img src="images/photos/fieldwork-02.svg" alt="Fieldwork 02">
-          <div class="grid-item-info">
-            Fieldwork 02 <span>2023</span>
-          </div>
         </div>
         
         <div class="grid-item" data-index="2" data-src="images/photos/fieldwork-03.svg" data-date="2023" data-title="Fieldwork 03" data-desc="露頭の観察スケッチやサンプリングを行っている様子です。">
           <img src="images/photos/fieldwork-03.svg" alt="Fieldwork 03">
-          <div class="grid-item-info">
-            Fieldwork 03 <span>2023</span>
-          </div>
         </div>
         
         <div class="grid-item" data-index="3" data-src="images/photos/fieldwork-04.svg" data-date="2022" data-title="Fieldwork 04" data-desc="2022年の調査時の写真です。広大な地形スケールを体感しました。">
           <img src="images/photos/fieldwork-04.svg" alt="Fieldwork 04">
-          <div class="grid-item-info">
-            Fieldwork 04 <span>2022</span>
-          </div>
         </div>
         
         <div class="grid-item" data-index="4" data-src="images/photos/fieldwork-05.svg" data-date="2022" data-title="Fieldwork 05" data-desc="研究室のメンバーとともに進めた現地地質調査の様子です。">
           <img src="images/photos/fieldwork-05.svg" alt="Fieldwork 05">
-          <div class="grid-item-info">
-            Fieldwork 05 <span>2022</span>
-          </div>
         </div>
         
         <div class="grid-item" data-index="5" data-src="images/photos/fieldwork-06.svg" data-date="2021" data-title="Fieldwork 06" data-desc="2021年の日常および研究活動初期のフィールドノートの記録写真です。">
           <img src="images/photos/fieldwork-06.svg" alt="Fieldwork 06">
-          <div class="grid-item-info">
-            Fieldwork 06 <span>2021</span>
-          </div>
         </div>
         
       </div>
