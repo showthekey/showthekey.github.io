@@ -10,26 +10,25 @@
     <style>
       /* ▼メインコンテンツの幅を650pxに制限・中央寄せ▼ */
       .listing-page {
-        max-width: 650px;
+        max-width: 700px;
         margin: 0 auto;
       }
 
-      /* ▼3列の正方形グリッド設定▼ */
-      .news-grid {
+      /* ▼4列の正方形グリッド設定▼ */
+      .news-grid, .photo-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3等分。余白を除いた幅から自動で写真サイズが決まります */
+        grid-template-columns: repeat(4, 1fr); /* 4列に変更 */
         
-        /* 【ここで余白と写真サイズを調整します】 */
-        /* 最初の数字が「縦の余白」、次の数字が「横の余白」です。 */
-        gap: 20px 20px; 
+        /* 縦横の余白を現在の半分（20px -> 10px）に縮小 */
+        gap: 10px 10px; 
         
         margin-top: 40px;
       }
       
       .grid-item {
         cursor: pointer;
-        position: relative; /* 文字を重ねるための基準点 */
-        overflow: hidden; /* 角丸などを設定した際に文字や画像がはみ出ないようにする */
+        position: relative;
+        overflow: hidden;
       }
       .grid-item img {
         width: 100%;
@@ -43,33 +42,32 @@
         opacity: 0.8;
       }
       
-      /* ▼画像の上に重ねる文字の設定▼ */
+      /* news.html用：画像上のオーバーレイ設定 */
       .grid-item-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 12px;
+        padding: 10px; /* 余白に合わせて少し調整 */
         box-sizing: border-box;
-        /* 白文字を読みやすくするため、上部だけに薄い黒のグラデーションを敷く */
         background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
-        color: #fff; /* 文字色を白に */
-        pointer-events: none; /* マウスのクリックを邪魔しないようにする */
+        color: #fff;
+        pointer-events: none;
       }
       .grid-item-overlay time {
-        font-size: 11px;
-        letter-spacing: .07em;
+        font-size: 10px; /* 4列用に少し調整 */
+        letter-spacing: .05em;
         display: block;
-        margin-bottom: 4px;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.8); /* 文字に少し影をつけて読みやすくする */
+        margin-bottom: 2px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
       }
       .grid-item-overlay h2 {
         margin: 0;
-        font-size: 14px;
+        font-size: 12px; /* 4列用に文字サイズを調整 */
         font-weight: normal;
-        line-height: 1.4;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        line-height: 1.3;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.8);
       }
 
       /* ▼ポップアップ（モーダル）の基本設定▼ */
