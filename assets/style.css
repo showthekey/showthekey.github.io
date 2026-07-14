@@ -246,10 +246,10 @@ h2 {
 
 /* ▼ 今回変更したレイアウト部分 ▼ */
 .about-layout {
-  max-width: 930px;
+  max-width: 970px;
   margin: 0 auto; /* 中央寄せ */
   position: relative; /* 画像を右上に固定するための基準 */
-  padding-right: 230px; /* 右側の画像と文字が被らないようにスペースを空ける */
+  padding-right: 270px; /* 右側の画像と文字が被らないようにスペースを空ける */
 }
 
 .profile-photo {
