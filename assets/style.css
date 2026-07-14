@@ -1,6 +1,6 @@
 /* ロゴは --logo-width と --logo-max-height を変えるだけで大きさを調整できます。縦横比は維持されます。 */
 /* トップ画像を右へ移動する場合は --top-image-shift を 20px などに変更します。 */
-:root { --ink:#141414; --soft:#6d6a69; --line:#dedbd8; --pink:#df2d87; --paper:#fff; --mist:#f4f2ef; --logo-width:240px; --logo-max-height:90px; --top-image-shift:150px; }
+:root { --ink:#141414; --soft:#6d6a69; --line:#dedbd8; --pink:#df2d87; --paper:#fff; --mist:#f4f2ef; --logo-width:240px; --logo-max-height:90px; --top-image-shift:150px; --nav-gap:10px; --header-gap:36px; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; color:var(--ink); background:var(--paper); font-family:Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-size:15px; line-height:1.7; }
@@ -9,10 +9,10 @@ a:hover { color:var(--pink); }
 img { display:block; max-width:100%; }
 .site-width { width:min(100% - 48px, 1100px); margin:0 auto; }
 .site-header { padding:31px 0 20px; background:#fff; }
-.header-row { display:flex; align-items:center; gap:36px; }
+.header-row { display:flex; align-items:center; gap:var(--header-gap); }
 .wordmark { display:block; flex:0 0 var(--logo-width); text-decoration:none; }
 .wordmark img { display:block; width:var(--logo-width); height:auto; max-height:var(--logo-max-height); object-fit:contain; object-position:left center; }
-nav { display:flex; flex:1; align-items:center; justify-content:space-between; gap:16px; }
+nav { display:flex; flex:1; align-items:center; justify-content:flex-start; gap:var(--nav-gap); }
 nav a { position:relative; color:#111; text-decoration:none; font-size:13px; white-space:nowrap; }
 nav a.active, nav a:hover { color:var(--pink); }
 nav a.active::after { content:""; position:absolute; width:4px; height:4px; border-radius:50%; background:currentColor; left:50%; bottom:-9px; transform:translateX(-50%); }
