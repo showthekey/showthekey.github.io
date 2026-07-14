@@ -5,9 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hiroki Shozaki のフィールド写真">
     <title>Photos | Hiroki Shozaki</title>
-    <!-- アイコンのファイル名を index.html と統一 -->
     <link rel="icon" href="images/favi.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+      /* 3列の正方形グリッド設定 */
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px 20px;
+        margin-top: 40px;
+      }
+      .grid-item {
+        cursor: pointer;
+      }
+      .grid-item img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background: var(--mist);
+        transition: opacity 0.2s;
+      }
+      .grid-item img:hover {
+        opacity: 0.8;
+      }
+      .grid-item-info {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 8px;
+        font-size: 12px;
+      }
+      .grid-item-info span {
+        color: var(--soft);
+      }
+
+      /* ポップアップ（モーダル）の基本設定 */
+      .custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-wrapper {
+        display: flex;
+        width: min(90% - 40px, 980px);
+        height: 75vh;
+        background: #fff;
+        position: relative;
+        align-items: center;
+      }
+      .modal-text-side {
+        flex: 1;
+        padding: 40px;
+        max-width: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .modal-text-side time {
+        color: var(--pink);
+        font-size: 12px;
+        letter-spacing: .07em;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .modal-text-side h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.4;
+        margin-top: 0;
+      }
+      .modal-text-side p {
+        font-size: 13px;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .modal-image-side {
+        flex: 1.5;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-image-side img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* 画像を元の比率で全体表示 */
+      }
+      .modal-close-btn {
+        position: absolute;
+        top: -40px;
+        right: -20px;
+        font-size: 35px;
+        cursor: pointer;
+        color: var(--ink);
+        user-select: none;
+      }
+      .modal-arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 36px;
+        cursor: pointer;
+        color: var(--ink);
+        padding: 10px;
+        user-select: none;
+        transition: color 0.2s;
+      }
+      .modal-arrow-btn:hover {
+        color: var(--pink);
+      }
+      .modal-arrow-left {
+        left: -60px;
+      }
+      .modal-arrow-right {
+        right: -60px;
+      }
+
+      /* スマートフォン向け調整 */
+      @media (max-width: 768px) {
+        .photo-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .modal-wrapper {
+          flex-direction: column-reverse;
+          height: 85vh;
+          width: 90%;
+        }
+        .modal-text-side {
+          max-width: 100%;
+          padding: 24px;
+        }
+        .modal-image-side {
+          padding: 16px;
+          width: 100%;
+        }
+        .modal-arrow-left { left: -40px; }
+        .modal-arrow-right { right: -40px; }
+        .modal-close-btn { top: -40px; right: 0; }
+      }
+      @media (max-width: 480px) {
+        .photo-grid {
+          grid-template-columns: 1fr;
+        }
+        .modal-arrow-btn {
+          top: auto;
+          bottom: -50px;
+          transform: none;
+        }
+        .modal-arrow-left { left: 20px; }
+        .modal-arrow-right { right: 20px; }
+        .modal-close-btn { top: 10px; right: 10px; z-index: 2100; }
+        .modal-wrapper { height: 75vh; }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -33,38 +192,125 @@
         <p>フィールド調査・学会・日々の記録。</p>
       </header>
       
-      <!-- Replace the files below with your photos. Keep the same file names or change each src attribute. -->
       <div class="photo-grid">
-        <figure>
-          <img src="images/photos/fieldwork-01.svg" alt="フィールドワーク写真 1 のプレースホルダー">
-          <figcaption>Fieldwork 01 <span>2024</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/photos/fieldwork-02.svg" alt="フィールドワーク写真 2 のプレースホルダー">
-          <figcaption>Fieldwork 02 <span>2023</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/photos/fieldwork-03.svg" alt="フィールドワーク写真 3 のプレースホルダー">
-          <figcaption>Fieldwork 03 <span>2023</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/photos/fieldwork-04.svg" alt="フィールドワーク写真 4 のプレースホルダー">
-          <figcaption>Fieldwork 04 <span>2022</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/photos/fieldwork-05.svg" alt="フィールドワーク写真 5 のプレースホルダー">
-          <figcaption>Fieldwork 05 <span>2022</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/photos/fieldwork-06.svg" alt="フィールドワーク写真 6 のプレースホルダー">
-          <figcaption>Fieldwork 06 <span>2021</span></figcaption>
-        </figure>
+        
+        <div class="grid-item" data-index="0" data-src="images/photos/fieldwork-01.svg" data-date="2024" data-title="Fieldwork 01" data-desc="2024年に行われたフィールド調査の際の記録写真です。ここに詳細な説明文を入力できます。">
+          <img src="images/photos/fieldwork-01.svg" alt="Fieldwork 01">
+          <div class="grid-item-info">
+            Fieldwork 01 <span>2024</span>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="1" data-src="images/photos/fieldwork-02.svg" data-date="2023" data-title="Fieldwork 02" data-desc="2023年のフィールドワークの記録です。地質構造の観察を行いました。">
+          <img src="images/photos/fieldwork-02.svg" alt="Fieldwork 02">
+          <div class="grid-item-info">
+            Fieldwork 02 <span>2023</span>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="2" data-src="images/photos/fieldwork-03.svg" data-date="2023" data-title="Fieldwork 03" data-desc="露頭の観察スケッチやサンプリングを行っている様子です。">
+          <img src="images/photos/fieldwork-03.svg" alt="Fieldwork 03">
+          <div class="grid-item-info">
+            Fieldwork 03 <span>2023</span>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="3" data-src="images/photos/fieldwork-04.svg" data-date="2022" data-title="Fieldwork 04" data-desc="2022年の調査時の写真です。広大な地形スケールを体感しました。">
+          <img src="images/photos/fieldwork-04.svg" alt="Fieldwork 04">
+          <div class="grid-item-info">
+            Fieldwork 04 <span>2022</span>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="4" data-src="images/photos/fieldwork-05.svg" data-date="2022" data-title="Fieldwork 05" data-desc="研究室のメンバーとともに進めた現地地質調査の様子です。">
+          <img src="images/photos/fieldwork-05.svg" alt="Fieldwork 05">
+          <div class="grid-item-info">
+            Fieldwork 05 <span>2022</span>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="5" data-src="images/photos/fieldwork-06.svg" data-date="2021" data-title="Fieldwork 06" data-desc="2021年の日常および研究活動初期のフィールドノートの記録写真です。">
+          <img src="images/photos/fieldwork-06.svg" alt="Fieldwork 06">
+          <div class="grid-item-info">
+            Fieldwork 06 <span>2021</span>
+          </div>
+        </div>
+        
       </div>
     </main>
+
+    <div id="custom-modal" class="custom-modal">
+      <div class="modal-wrapper">
+        <span class="modal-close-btn">&times;</span>
+        <div class="modal-arrow-btn modal-arrow-left">&#10094;</div>
+        <div class="modal-arrow-btn modal-arrow-right">&#10095;</div>
+        
+        <div class="modal-text-side">
+          <time id="modal-date"></time>
+          <h2 id="modal-title"></h2>
+          <p id="modal-desc"></p>
+        </div>
+        
+        <div class="modal-image-side">
+          <img id="modal-img" src="" alt="">
+        </div>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="site-width">© <span class="year"></span> Hiroki Shozaki</div>
     </footer>
     <script src="assets/site.js"></script>
+
+    <script>
+      const items = document.querySelectorAll('.grid-item');
+      const modal = document.getElementById('custom-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalDate = document.getElementById('modal-date');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      let currentIndex = 0;
+
+      function openModal(index) {
+        currentIndex = parseInt(index);
+        const item = items[currentIndex];
+        
+        modalImg.src = item.getAttribute('data-src');
+        modalDate.textContent = item.getAttribute('data-date');
+        modalTitle.textContent = item.getAttribute('data-title');
+        modalDesc.textContent = item.getAttribute('data-desc');
+        
+        modal.style.display = 'flex';
+      }
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          openModal(item.getAttribute('data-index'));
+        });
+      });
+
+      document.querySelector('.modal-close-btn').addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      document.querySelector('.modal-arrow-left').addEventListener('click', () => {
+        let nextIndex = currentIndex - 1;
+        if (nextIndex < 0) nextIndex = items.length - 1;
+        openModal(nextIndex);
+      });
+
+      document.querySelector('.modal-arrow-right').addEventListener('click', () => {
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= items.length) nextIndex = 0;
+        openModal(nextIndex);
+      });
+
+      // 背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
