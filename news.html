@@ -8,13 +8,25 @@
     <link rel="icon" href="images/favi.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/style.css">
     <style>
-      /* 3列の正方形グリッド設定 */
+      /* ▼メインコンテンツの幅を650pxに制限・中央寄せ▼ */
+      .listing-page {
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      /* ▼3列の正方形グリッド設定▼ */
       .news-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px 24px;
+        grid-template-columns: repeat(3, 1fr); /* 3等分。余白を除いた幅から自動で写真サイズが決まります */
+        
+        /* 【ここで余白と写真サイズを調整します】 */
+        /* 最初の数字(40px)が「縦の余白」、次の数字(20px)が「横の余白」です。 */
+        /* この数字を大きくすると余白が広がり、相対的に写真のサイズは小さくなります。 */
+        gap: 40px 20px; 
+        
         margin-top: 40px;
       }
+      
       .grid-item {
         cursor: pointer;
       }
@@ -39,17 +51,17 @@
       }
       .grid-item-info h2 {
         margin: 4px 0 2px;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
         line-height: 1.4;
       }
       .grid-item-info p {
         margin: 0;
         color: var(--soft);
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      /* ポップアップ（モーダル）の基本設定 */
+      /* ▼ポップアップ（モーダル）の基本設定▼ */
       .custom-modal {
         display: none;
         position: fixed;
