@@ -12,9 +12,11 @@
   <body>
     <header class="site-header">
       <div class="site-width header-row">
+        
         <a class="wordmark" href="index.html" aria-label="Hiroki Shozaki, top">
           <img src="images/H.Shozaki_A.png" alt="Hiroki Shozaki">
         </a>
+        
         <nav aria-label="Main navigation">
           <a href="index.html">top</a>
           <a href="news.html">news</a>
@@ -23,6 +25,7 @@
           <a href="photos.html">photos</a>
           <a href="contact.html">contact</a>
         </nav>
+        
       </div>
     </header>
 
@@ -33,27 +36,87 @@
       </header>
       
       <section class="about-layout">
-        <img class="profile-photo" src="images/profile.svg" alt="Hiroki Shozaki のプロフィール写真用プレースホルダー">
+        <img class="profile-photo" src="images/profile.svg" alt="Hiroki Shozaki のプロフィール写真">
         
         <div class="prose">
           <h2>Hiroki Shozaki</h2>
           <p>惑星地質を研究しています。惑星表層の地形を手がかりに、火星をはじめとする惑星の環境変遷を読み解くことに関心があります。</p>
-          <p class="editable">ここに、所属・経歴・研究への関心など、元のホームページの「about me」本文を追加してください。</p>
           
-          <dl>
+          <!-- BIOGRAPHY セクション -->
+          <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--line); padding-bottom: 5px;">BIOGRAPHY</h3>
+          
+          <!-- ここが年表のレイアウト（左：160px、右：残り全部） -->
+          <div style="display: grid; grid-template-columns: 160px 1fr; gap: 16px 12px; font-size: 14px; margin-bottom: 40px;">
+            <div>1996年9月</div>
+            <div>福岡にて誕生</div>
+            
+            <div>2015年3月</div>
+            <div>那須高原海城高等学校　卒業</div>
+            
+            <div>2015年4月</div>
+            <div>高知大学理学部　入学</div>
+            
+            <div>2019年3月</div>
             <div>
-              <dt>Research interests</dt>
-              <dd>Planetary geology / Mars / Geomorphology</dd>
+              高知大学理学部理学科地球科学コース　卒業<br>
+              <span style="font-size: 12px; color: var(--soft); line-height: 1.5; display: inline-block; margin-top: 4px;">
+                (学士論文(理学)：アメリカ中西部の下部ジュラ系風成層から復元する超大陸パンゲア時代の大気循環，指導教官：長谷川精)
+              </span>
             </div>
+            
+            <div>2019年4月</div>
+            <div>東京工業大学理学院地球惑星科学系修士課程　入学</div>
+            
+            <div>2021年3月</div>
             <div>
-              <dt>Links</dt>
-              <dd>
-                <a href="#">Curriculum Vitae (PDF)</a>　
-                <a href="#">Google Scholar</a>　
-                <a href="#">researchmap</a>
-              </dd>
+              東京工業大学理学院地球惑星科学系修士課程　卒業<br>
+              <span style="font-size: 12px; color: var(--soft); line-height: 1.5; display: inline-block; margin-top: 4px;">
+                (修士論文(理学)：Recognition and classification of Martian chaos terrains using imagery machine learning: Implications for ground ice distributions and their dynamics on Mars，指導教官：関根康人)
+              </span>
             </div>
-          </dl>
+            
+            <div>2021年4月</div>
+            <div>東京工業大学理学院地球惑星科学系博士後期課程　入学</div>
+            
+            <div>2021年4月–2022年3月</div>
+            <div>ちょっとお休み…</div>
+            
+            <div>2023年10月–</div>
+            <div>フランス・Laboratoire de Planétologie et Géosciences, Nantes Université 　訪問博士課程学生</div>
+          </div>
+
+          <!-- LAB セクション -->
+          <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid var(--line); padding-bottom: 5px;">LAB.</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 14px; line-height: 1.8; margin-bottom: 40px;">
+            <li><b>学士課程(理学)：</b>高知大学理学部理学科地球科学コース　長谷川精研究室</li>
+            <li><b>修士課程(理学)：</b>東京工業大学理学院地球惑星科学系 地球生命研究所 関根康人研究室</li>
+            <li><b>博士後期課程(理学)：</b>東京工業大学理学院地球惑星科学系 地球生命研究所 関根康人研究室</li>
+            <li><b>LPG, Nantes Université ホスト研究者：</b>Susan Conway, Nicolas Mangold, Anna Grau Galofre</li>
+          </ul>
+
+          <!-- GRANTS AND FELLOWSHIPS セクション -->
+          <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid var(--line); padding-bottom: 5px;">GRANTS AND FELLOWSHIPS</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 14px; line-height: 1.8; margin-bottom: 40px;">
+            <li style="margin-bottom: 12px;">▪️ April 2024–: 特別研究員奨励費(Grant-in-Aid for JSPS Fellows, DC2)<br>
+              <span style="display: inline-block; padding-left: 1.5em; color: var(--soft);">研究課題名「地球・火星氷底地形の分類・比較に基づく古火星氷床排水系と水循環の解明」, 24KJ1046, 代表研究者</span>
+            </li>
+            <li>▪️ April 2023–March 2024: ELSI research fellow program for PhD student</li>
+          </ul>
+
+          <!-- ACADEMIC SOCIETIES セクション -->
+          <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid var(--line); padding-bottom: 5px;">ACADEMIC SOCIETIES</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 14px; line-height: 1.8; margin-bottom: 40px;">
+            <li>日本地球惑星科学連合</li>
+            <li>日本惑星科学会</li>
+            <li>American Geophysical Union</li>
+          </ul>
+
+          <!-- OTHER ACTIVITIES セクション -->
+          <h3 style="margin-top: 40px; margin-bottom: 15px; font-size: 16px; border-bottom: 1px solid var(--line); padding-bottom: 5px;">OTHER ACTIVITIES</h3>
+          <ul style="list-style: none; padding-left: 0; font-size: 14px; line-height: 1.8; margin-bottom: 40px;">
+            <li>地球惑星科学NYS事務局メンバー</li>
+          </ul>
+          
         </div>
       </section>
     </main>
