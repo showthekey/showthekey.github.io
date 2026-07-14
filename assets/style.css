@@ -249,7 +249,7 @@ h2 {
   max-width: 700px;
   margin: 0 auto; /* 中央寄せ */
   position: relative; /* 画像を右上に固定するための基準 */
-  padding-right: 450px; /* 右側の画像と文字が被らないようにスペースを空ける */
+  padding-right: 300px; /* 右側の画像と文字が被らないようにスペースを空ける */
 }
 
 .profile-photo {
