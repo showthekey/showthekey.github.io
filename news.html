@@ -20,15 +20,16 @@
         grid-template-columns: repeat(3, 1fr); /* 3等分。余白を除いた幅から自動で写真サイズが決まります */
         
         /* 【ここで余白と写真サイズを調整します】 */
-        /* 最初の数字(40px)が「縦の余白」、次の数字(20px)が「横の余白」です。 */
-        /* この数字を大きくすると余白が広がり、相対的に写真のサイズは小さくなります。 */
-        gap: 40px 20px; 
+        /* 最初の数字が「縦の余白」、次の数字が「横の余白」です。 */
+        gap: 20px 20px; 
         
         margin-top: 40px;
       }
       
       .grid-item {
         cursor: pointer;
+        position: relative; /* 文字を重ねるための基準点 */
+        overflow: hidden; /* 角丸などを設定した際に文字や画像がはみ出ないようにする */
       }
       .grid-item img {
         width: 100%;
@@ -36,29 +37,39 @@
         object-fit: cover;
         background: var(--mist);
         transition: opacity 0.2s;
+        display: block;
       }
-      .grid-item img:hover {
+      .grid-item:hover img {
         opacity: 0.8;
       }
-      .grid-item-info {
-        padding-top: 12px;
+      
+      /* ▼画像の上に重ねる文字の設定▼ */
+      .grid-item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        /* 白文字を読みやすくするため、上部だけに薄い黒のグラデーションを敷く */
+        background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
+        color: #fff; /* 文字色を白に */
+        pointer-events: none; /* マウスのクリックを邪魔しないようにする */
       }
-      .grid-item-info time {
-        color: var(--pink);
+      .grid-item-overlay time {
         font-size: 11px;
         letter-spacing: .07em;
         display: block;
+        margin-bottom: 4px;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.8); /* 文字に少し影をつけて読みやすくする */
       }
-      .grid-item-info h2 {
-        margin: 4px 0 2px;
+      .grid-item-overlay h2 {
+        margin: 0;
         font-size: 14px;
         font-weight: bold;
         line-height: 1.4;
-      }
-      .grid-item-info p {
-        margin: 0;
-        color: var(--soft);
-        font-size: 12px;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.8);
       }
 
       /* ▼ポップアップ（モーダル）の基本設定▼ */
@@ -214,28 +225,26 @@
         
         <div class="grid-item" data-index="0" data-src="images/news/2024-komatsu.svg" data-date="2024.08.08–09" data-title="ダヌンツィオ大学を訪問しました" data-desc="イタリア・ダヌンツィオ大学国際惑星科学研究大学院の小松吾郎博士の研究室を訪問し、研究交流を行いました。">
           <img src="images/news/2024-komatsu.svg" alt="研究室訪問">
-          <div class="grid-item-info">
+          <!-- 画像に重ねるテキスト -->
+          <div class="grid-item-overlay">
             <time>2024.08.08–09</time>
             <h2>ダヌンツィオ大学を訪問しました</h2>
-            <p>小松吾郎博士の研究室を訪問しました。</p>
           </div>
         </div>
         
         <div class="grid-item" data-index="1" data-src="images/news/2024-mars.svg" data-date="2024.07.22–25" data-title="第10回国際火星会議でポスター発表" data-desc="Caltech（カリフォルニア工科大学）で開催された第10回国際火星会議に参加し、研究成果をポスター形式で発表しました。">
           <img src="images/news/2024-mars.svg" alt="学会発表">
-          <div class="grid-item-info">
+          <div class="grid-item-overlay">
             <time>2024.07.22–25</time>
             <h2>第10回国際火星会議でポスター発表</h2>
-            <p>Caltech で開催された国際火星会議に参加しました。</p>
           </div>
         </div>
         
         <div class="grid-item" data-index="2" data-src="images/news/2024-field.svg" data-date="2024.06.04–07.02" data-title="アメリカ中西部で現地調査" data-desc="高知大学の長谷川精博士、ダヌンツィオ大学の小松吾郎博士らとの共同研究の一環として、火星河川地形アナログのアメリカ中西部現地調査を行いました。">
           <img src="images/news/2024-field.svg" alt="フィールド調査">
-          <div class="grid-item-info">
+          <div class="grid-item-overlay">
             <time>2024.06.04–07.02</time>
             <h2>アメリカ中西部で現地調査</h2>
-            <p>火星河川地形アナログの現地調査を行いました。</p>
           </div>
         </div>
         
