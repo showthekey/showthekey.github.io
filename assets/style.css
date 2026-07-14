@@ -1,5 +1,5 @@
 /* ロゴは --logo-width と --logo-max-height を変えるだけで大きさを調整できます。縦横比は維持されます。 */
-:root { --ink:#141414; --soft:#6d6a69; --line:#dedbd8; --pink:#df2d87; --paper:#fff; --mist:#f4f2ef; --logo-width:173px; --logo-max-height:100px; }
+:root { --ink:#141414; --soft:#6d6a69; --line:#dedbd8; --pink:#df2d87; --paper:#fff; --mist:#f4f2ef; --logo-width:240px; --logo-max-height:90px; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { margin:0; color:var(--ink); background:var(--paper); font-family:Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-size:15px; line-height:1.7; }
