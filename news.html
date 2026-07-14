@@ -5,9 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Hiroki Shozaki の研究活動ニュース">
     <title>News | Hiroki Shozaki</title>
-    <!-- アイコンのファイル名を index.html と統一 -->
     <link rel="icon" href="images/favi.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+      /* 3列の正方形グリッド設定 */
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px 24px;
+        margin-top: 40px;
+      }
+      .grid-item {
+        cursor: pointer;
+      }
+      .grid-item img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background: var(--mist);
+        transition: opacity 0.2s;
+      }
+      .grid-item img:hover {
+        opacity: 0.8;
+      }
+      .grid-item-info {
+        padding-top: 12px;
+      }
+      .grid-item-info time {
+        color: var(--pink);
+        font-size: 11px;
+        letter-spacing: .07em;
+        display: block;
+      }
+      .grid-item-info h2 {
+        margin: 4px 0 2px;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      .grid-item-info p {
+        margin: 0;
+        color: var(--soft);
+        font-size: 13px;
+      }
+
+      /* ポップアップ（モーダル）の基本設定 */
+      .custom-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-wrapper {
+        display: flex;
+        width: min(90% - 40px, 980px);
+        height: 75vh;
+        background: #fff;
+        position: relative;
+        align-items: center;
+      }
+      .modal-text-side {
+        flex: 1;
+        padding: 40px;
+        max-width: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .modal-text-side time {
+        color: var(--pink);
+        font-size: 12px;
+        letter-spacing: .07em;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .modal-text-side h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.4;
+        margin-top: 0;
+      }
+      .modal-text-side p {
+        font-size: 13px;
+        color: var(--ink);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .modal-image-side {
+        flex: 1.5;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-image-side img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* 画像を元の比率で全体表示 */
+      }
+      .modal-close-btn {
+        position: absolute;
+        top: -40px;
+        right: -20px;
+        font-size: 35px;
+        cursor: pointer;
+        color: var(--ink);
+        user-select: none;
+      }
+      .modal-arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 36px;
+        cursor: pointer;
+        color: var(--ink);
+        padding: 10px;
+        user-select: none;
+        transition: color 0.2s;
+      }
+      .modal-arrow-btn:hover {
+        color: var(--pink);
+      }
+      .modal-arrow-left {
+        left: -60px;
+      }
+      .modal-arrow-right {
+        right: -60px;
+      }
+
+      /* スマートフォン向け調整 */
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .modal-wrapper {
+          flex-direction: column-reverse;
+          height: 85vh;
+          width: 90%;
+        }
+        .modal-text-side {
+          max-width: 100%;
+          padding: 24px;
+        }
+        .modal-image-side {
+          padding: 16px;
+          width: 100%;
+        }
+        .modal-arrow-left { left: -40px; }
+        .modal-arrow-right { right: -40px; }
+        .modal-close-btn { top: -40px; right: 0; }
+      }
+      @media (max-width: 480px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+        }
+        .modal-arrow-btn {
+          top: auto;
+          bottom: -50px;
+          transform: none;
+        }
+        .modal-arrow-left { left: 20px; }
+        .modal-arrow-right { right: 20px; }
+        .modal-close-btn { top: 10px; right: 10px; z-index: 2100; }
+        .modal-wrapper { height: 75vh; }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
@@ -33,48 +203,110 @@
         <p>研究活動・発表・フィールド調査の記録です。</p>
       </header>
       
-      <!-- Duplicate a news-card block below when adding news. Replace the placeholder image path with your photograph. -->
-      <div class="editorial-grid">
-        <article class="news-card feature">
-          <!-- リンク先を空(#)にしています。詳細ページを作った場合はそこにURLを入れます -->
-          <a href="#">
-            <img src="images/news/2024-komatsu.svg" alt="研究室訪問の写真用プレースホルダー">
-            <div>
-              <time datetime="2024-08-08">2024.08.08–09</time>
-              <h2>ダヌンツィオ大学を訪問しました</h2>
-              <p>小松吾郎博士の研究室を訪問しました。</p>
-            </div>
-          </a>
-        </article>
+      <div class="news-grid">
         
-        <article class="news-card">
-          <a href="#">
-            <img src="images/news/2024-mars.svg" alt="学会発表の写真用プレースホルダー">
-            <div>
-              <time datetime="2024-07-22">2024.07.22–25</time>
-              <h2>第10回国際火星会議でポスター発表</h2>
-              <p>Caltech で開催された国際火星会議に参加しました。</p>
-            </div>
-          </a>
-        </article>
+        <div class="grid-item" data-index="0" data-src="images/news/2024-komatsu.svg" data-date="2024.08.08–09" data-title="ダヌンツィオ大学を訪問しました" data-desc="イタリア・ダヌンツィオ大学国際惑星科学研究大学院の小松吾郎博士の研究室を訪問し、研究交流を行いました。">
+          <img src="images/news/2024-komatsu.svg" alt="研究室訪問">
+          <div class="grid-item-info">
+            <time>2024.08.08–09</time>
+            <h2>ダヌンツィオ大学を訪問しました</h2>
+            <p>小松吾郎博士の研究室を訪問しました。</p>
+          </div>
+        </div>
         
-        <article class="news-card">
-          <a href="#">
-            <img src="images/news/2024-field.svg" alt="フィールド調査の写真用プレースホルダー">
-            <div>
-              <time datetime="2024-06-04">2024.06.04–07.02</time>
-              <h2>アメリカ中西部で現地調査</h2>
-              <p>火星河川地形アナログの現地調査を行いました。</p>
-            </div>
-          </a>
-        </article>
+        <div class="grid-item" data-index="1" data-src="images/news/2024-mars.svg" data-date="2024.07.22–25" data-title="第10回国際火星会議でポスター発表" data-desc="Caltech（カリフォルニア工科大学）で開催された第10回国際火星会議に参加し、研究成果をポスター形式で発表しました。">
+          <img src="images/news/2024-mars.svg" alt="学会発表">
+          <div class="grid-item-info">
+            <time>2024.07.22–25</time>
+            <h2>第10回国際火星会議でポスター発表</h2>
+            <p>Caltech で開催された国際火星会議に参加しました。</p>
+          </div>
+        </div>
+        
+        <div class="grid-item" data-index="2" data-src="images/news/2024-field.svg" data-date="2024.06.04–07.02" data-title="アメリカ中西部で現地調査" data-desc="高知大学の長谷川精博士、ダヌンツィオ大学の小松吾郎博士らとの共同研究の一環として、火星河川地形アナログのアメリカ中西部現地調査を行いました。">
+          <img src="images/news/2024-field.svg" alt="フィールド調査">
+          <div class="grid-item-info">
+            <time>2024.06.04–07.02</time>
+            <h2>アメリカ中西部で現地調査</h2>
+            <p>火星河川地形アナログの現地調査を行いました。</p>
+          </div>
+        </div>
+        
       </div>
-      
     </main>
+
+    <div id="custom-modal" class="custom-modal">
+      <div class="modal-wrapper">
+        <span class="modal-close-btn">&times;</span>
+        <div class="modal-arrow-btn modal-arrow-left">&#10094;</div>
+        <div class="modal-arrow-btn modal-arrow-right">&#10095;</div>
+        
+        <div class="modal-text-side">
+          <time id="modal-date"></time>
+          <h2 id="modal-title"></h2>
+          <p id="modal-desc"></p>
+        </div>
+        
+        <div class="modal-image-side">
+          <img id="modal-img" src="" alt="">
+        </div>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="site-width">© <span class="year"></span> Hiroki Shozaki</div>
     </footer>
     <script src="assets/site.js"></script>
+
+    <script>
+      const items = document.querySelectorAll('.grid-item');
+      const modal = document.getElementById('custom-modal');
+      const modalImg = document.getElementById('modal-img');
+      const modalDate = document.getElementById('modal-date');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      let currentIndex = 0;
+
+      function openModal(index) {
+        currentIndex = parseInt(index);
+        const item = items[currentIndex];
+        
+        modalImg.src = item.getAttribute('data-src');
+        modalDate.textContent = item.getAttribute('data-date');
+        modalTitle.textContent = item.getAttribute('data-title');
+        modalDesc.textContent = item.getAttribute('data-desc');
+        
+        modal.style.display = 'flex';
+      }
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          openModal(item.getAttribute('data-index'));
+        });
+      });
+
+      document.querySelector('.modal-close-btn').addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      document.querySelector('.modal-arrow-left').addEventListener('click', () => {
+        let nextIndex = currentIndex - 1;
+        if (nextIndex < 0) nextIndex = items.length - 1;
+        openModal(nextIndex);
+      });
+
+      document.querySelector('.modal-arrow-right').addEventListener('click', () => {
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= items.length) nextIndex = 0;
+        openModal(nextIndex);
+      });
+
+      // 背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+    </script>
   </body>
 </html>
