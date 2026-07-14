@@ -256,7 +256,7 @@ h2 {
   position: absolute;
   top: 0;
   right: 0;
-  width: 140px; /* 画像を小さく */
+  width: 200px; /* 画像を小さく */
   height: auto;
   background: transparent;
 }
