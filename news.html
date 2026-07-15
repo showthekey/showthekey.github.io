@@ -8,20 +8,17 @@
     <link rel="icon" href="images/favi.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/style.css">
     <style>
-      /* ▼メインコンテンツの幅を650pxに制限・中央寄せ▼ */
+      /* ▼メインコンテンツの幅を700pxに拡大・中央寄せ▼ */
       .listing-page {
         max-width: 700px;
         margin: 0 auto;
       }
 
       /* ▼4列の正方形グリッド設定▼ */
-      .news-grid, .photo-grid {
+      .news-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4列に変更 */
-        
-        /* 縦横の余白を現在の半分（20px -> 10px）に縮小 */
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px 10px; 
-        
         margin-top: 40px;
       }
       
@@ -42,21 +39,21 @@
         opacity: 0.8;
       }
       
-      /* news.html用：画像上のオーバーレイ設定 */
+      /* 画像の上に重ねる文字の設定 */
       .grid-item-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 10px; /* 余白に合わせて少し調整 */
+        padding: 10px;
         box-sizing: border-box;
         background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 40%);
         color: #fff;
         pointer-events: none;
       }
       .grid-item-overlay time {
-        font-size: 10px; /* 4列用に少し調整 */
+        font-size: 10px;
         letter-spacing: .05em;
         display: block;
         margin-bottom: 2px;
@@ -64,7 +61,7 @@
       }
       .grid-item-overlay h2 {
         margin: 0;
-        font-size: 12px; /* 4列用に文字サイズを調整 */
+        font-size: 12px;
         font-weight: normal;
         line-height: 1.3;
         text-shadow: 0 1px 2px rgba(0,0,0,0.8);
@@ -118,6 +115,11 @@
         color: var(--ink);
         line-height: 1.6;
         margin: 0;
+        word-break: break-all; /* URLなどがはみ出さないように設定 */
+      }
+      .modal-text-side a {
+        color: var(--pink);
+        text-decoration: underline;
       }
       .modal-image-side {
         flex: 1.5;
@@ -130,7 +132,7 @@
       .modal-image-side img {
         max-width: 100%;
         max-height: 100%;
-        object-fit: contain; /* 画像を元の比率で全体表示 */
+        object-fit: contain;
       }
       .modal-close-btn {
         position: absolute;
@@ -218,34 +220,222 @@
     </header>
 
     <main class="site-width listing-page">
-     
+      <header class="page-title">
+        <p class="eyebrow">ACTIVITY LOG</p>
+        <h1>News</h1>
+        <p>研究活動・発表・フィールド調査の記録です。</p>
+      </header>
+      
       <div class="news-grid">
         
-        <div class="grid-item" data-index="0" data-src="images/news/2024-komatsu.svg" data-date="2024.08.08–09" data-title="ダヌンツィオ大学を訪問しました" data-desc="イタリア・ダヌンツィオ大学国際惑星科学研究大学院の小松吾郎博士の研究室を訪問し、研究交流を行いました。">
-          <img src="images/news/2024-komatsu.svg" alt="研究室訪問">
-          <!-- 画像に重ねるテキスト -->
+        <div class="grid-item" data-index="0" data-src="images/news/2024-komatsu.svg" data-date="2024.08.08–09" data-title="ダヌンツィオ大学訪問" data-desc="イタリア・ダヌンツィオ大学国際惑星科学研究大学院の小松吾郎博士の研究室に訪問しました．">
+          <img src="images/news/2024-komatsu.svg" alt="ダヌンツィオ大学訪問">
           <div class="grid-item-overlay">
             <time>2024.08.08–09</time>
             <h2>ダヌンツィオ大学訪問</h2>
           </div>
         </div>
         
-        <div class="grid-item" data-index="1" data-src="images/news/2024-mars.svg" data-date="2024.07.22–25" data-title="第10回国際火星会議でポスター発表" data-desc="Caltech（カリフォルニア工科大学）で開催された第10回国際火星会議に参加し、研究成果をポスター形式で発表しました。">
-          <img src="images/news/2024-mars.svg" alt="学会発表">
+        <div class="grid-item" data-index="1" data-src="images/news/2024-mars.svg" data-date="2024.07.22–25" data-title="第10回国際火星会議で発表" data-desc="第10回国際火星会議@Caltechでポスター発表しました．">
+          <img src="images/news/2024-mars.svg" alt="第10回国際火星会議で発表">
           <div class="grid-item-overlay">
             <time>2024.07.22–25</time>
-            <h2>第10回国際火星会議</h2>
+            <h2>第10回国際火星会議で発表</h2>
           </div>
         </div>
         
-        <div class="grid-item" data-index="2" data-src="images/news/2024-field.svg" data-date="2024.06.04–07.02" data-title="アメリカ中西部で現地調査" data-desc="高知大学の長谷川精博士、ダヌンツィオ大学の小松吾郎博士らとの共同研究の一環として、火星河川地形アナログのアメリカ中西部現地調査を行いました。">
-          <img src="images/news/2024-field.svg" alt="フィールド調査">
+        <div class="grid-item" data-index="2" data-src="images/news/2024-field.svg" data-date="2024.06.04–07.02" data-title="アメリカ中西部調査" data-desc="高知大学の長谷川精博士，ダヌンツィオ大学の小松吾郎博士ほかの共同研究でアメリカ中西部に調査に行きました．自身の火星河川地形アナログの現地調査も行いました．">
+          <img src="images/news/2024-field.svg" alt="アメリカ中西部調査">
           <div class="grid-item-overlay">
             <time>2024.06.04–07.02</time>
             <h2>アメリカ中西部調査</h2>
           </div>
         </div>
-        
+
+        <div class="grid-item" data-index="3" data-src="images/news/2024-komatsu.svg" data-date="2023.10.25" data-title="ナント大学研究留学" data-desc="フランス・ナント大学Laboratoire de Planétologie et Géosciences のSusan Conway博士､Anna Grau Galofre博士､Nicolas Mangold博士のもとで1年と少し研究留学です．">
+          <img src="images/news/2024-komatsu.svg" alt="ナント大学研究留学">
+          <div class="grid-item-overlay">
+            <time>2023.10.25</time>
+            <h2>ナント大学研究留学</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="4" data-src="images/news/2024-mars.svg" data-date="2023.06.25–07.13" data-title="モンゴル現地調査" data-desc="高知大学の長谷川精博士，ダヌンツィオ大学の小松吾郎博士ほかの共同研究でモンゴルに行きました．火星周氷河地形アナログの現地調査です．">
+          <img src="images/news/2024-mars.svg" alt="モンゴル現地調査">
+          <div class="grid-item-overlay">
+            <time>2023.06.25–07.13</time>
+            <h2>モンゴル現地調査</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="5" data-src="images/news/2024-field.svg" data-date="2023.06.08–18" data-title="ハワイ島現地調査" data-desc="スミソニアン博物館地球惑星研究センターCEPSのBob Craddock博士とフロリダ・ガルフ・コースト大学のRachel Rotz博士のお誘いで，ハワイ島へ現地調査に行きました．溶岩洞内地下水調査とカウ砂漠砂丘の地中レーダー探査です．">
+          <img src="images/news/2024-field.svg" alt="ハワイ島現地調査">
+          <div class="grid-item-overlay">
+            <time>2023.06.08–18</time>
+            <h2>ハワイ島現地調査</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="6" data-src="images/news/2024-komatsu.svg" data-date="2023.06.06" data-title="国際先導研究キックオフ" data-desc="国際共同研究加速基金(国際先導研究)「太陽系に広がる惑星環境における前生命化学進化と分子シ ステム誕生の多様性の解明」のキックオフミーティングに参加しました．">
+          <img src="images/news/2024-komatsu.svg" alt="国際先導研究キックオフ">
+          <div class="grid-item-overlay">
+            <time>2023.06.06</time>
+            <h2>国際先導研究キックオフ</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="7" data-src="images/news/2024-mars.svg" data-date="2023.05.21–26" data-title="JpGU2023 ポスター発表" data-desc="JpGU2023参加しました．水惑星学セッションでポスター発表しました．">
+          <img src="images/news/2024-mars.svg" alt="JpGU2023 ポスター発表">
+          <div class="grid-item-overlay">
+            <time>2023.05.21–26</time>
+            <h2>JpGU2023 ポスター発表</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="8" data-src="images/news/2024-field.svg" data-date="2023.02.20–22" data-title="第24回惑星圏シンポジウム" data-desc="第24回惑星圏シンポジウム@東北大で招待講演（口頭）しました．">
+          <img src="images/news/2024-field.svg" alt="第24回惑星圏シンポジウム">
+          <div class="grid-item-overlay">
+            <time>2023.02.20–22</time>
+            <h2>第24回惑星圏シンポジウム</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="9" data-src="images/news/2024-komatsu.svg" data-date="2022.09.20–22" data-title="日本惑星科学会 優秀発表賞" data-desc="日本惑星科学会秋季講演会2022@水戸の最優秀発表賞セッションで口頭発表しました．優秀発表賞受賞しました．">
+          <img src="images/news/2024-komatsu.svg" alt="日本惑星科学会 優秀発表賞">
+          <div class="grid-item-overlay">
+            <time>2022.09.20–22</time>
+            <h2>日本惑星科学会 優秀発表賞</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="10" data-src="images/news/2024-mars.svg" data-date="2022.08.28" data-title="堆積学スクール2022" data-desc="堆積学スクール2022＠多摩川河口干潟に参加しました．">
+          <img src="images/news/2024-mars.svg" alt="堆積学スクール2022">
+          <div class="grid-item-overlay">
+            <time>2022.08.28</time>
+            <h2>堆積学スクール2022</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="11" data-src="images/news/2024-field.svg" data-date="2022.08.10" data-title="Remote Sensing誌 論文出版" data-desc="修士研究の成果がRemote Sensing誌にて受理・出版されました．<br><br>Shozaki, H., Sekine, Y., Guttenberg, N., and Komatsu, G.,: Recognition and classification of Martian chaos terrains using imagery machine learning: A global distribution of chaos linked to groundwater circulation, catastrophic flooding, and magmatism on Mars, <a href='https://doi.org/10.3390/rs14163883' target='_blank'>https://doi.org/10.3390/rs14163883</a>.">
+          <img src="images/news/2024-field.svg" alt="Remote Sensing誌 論文出版">
+          <div class="grid-item-overlay">
+            <time>2022.08.10</time>
+            <h2>Remote Sensing誌 論文出版</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="12" data-src="images/news/2024-komatsu.svg" data-date="2022.07.05" data-title="Climate of the Past誌 論文出版" data-desc="卒業研究の成果がClimate of the Past誌にて受理・出版されました．<br><br>Shozaki, H. and Hasegawa, H.: Development of longitudinal dunes under Pangaean atmospheric circulation, <a href='https://doi.org/10.5194/cp-18-1529-2022' target='_blank'>https://doi.org/10.5194/cp-18-1529-2022</a>.">
+          <img src="images/news/2024-komatsu.svg" alt="Climate of the Past誌 論文出版">
+          <div class="grid-item-overlay">
+            <time>2022.07.05</time>
+            <h2>Climate of the Past誌 論文出版</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="13" data-src="images/news/2024-mars.svg" data-date="2021.03.05" data-title="優秀修士論文賞" data-desc="修士研究・論文が，東工大地球惑星科学系の優秀修士論文賞に選ばれました．">
+          <img src="images/news/2024-mars.svg" alt="優秀修士論文賞">
+          <div class="grid-item-overlay">
+            <time>2021.03.05</time>
+            <h2>優秀修士論文賞</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="14" data-src="images/news/2024-field.svg" data-date="2021.03.01–02" data-title="第8回衛星系研究会" data-desc="第8回衛星系研究会でオンライン口頭講演しました．">
+          <img src="images/news/2024-field.svg" alt="第8回衛星系研究会">
+          <div class="grid-item-overlay">
+            <time>2021.03.01–02</time>
+            <h2>第8回衛星系研究会</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="15" data-src="images/news/2024-komatsu.svg" data-date="2020.12.01–17" data-title="AGU Fall Meeting 2020" data-desc="AGU Fall Meeting 2020: Aquaplanetology: Aqueous Environments and Habitability in the Solar System II PostersでVirtual Poster発表しました．">
+          <img src="images/news/2024-komatsu.svg" alt="AGU Fall Meeting 2020">
+          <div class="grid-item-overlay">
+            <time>2020.12.01–17</time>
+            <h2>AGU Fall Meeting 2020</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="16" data-src="images/news/2024-mars.svg" data-date="2020.07.12–16" data-title="JpGU - AGU Joint Meeting 2020" data-desc="JpGU - AGU Joint Meeting 2020: Virtual 水惑星セッションで Virtual Poster発表しました．">
+          <img src="images/news/2024-mars.svg" alt="JpGU - AGU Joint Meeting 2020">
+          <div class="grid-item-overlay">
+            <time>2020.07.12–16</time>
+            <h2>JpGU - AGU Joint Meeting 2020</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="17" data-src="images/news/2024-field.svg" data-date="2020.06.30" data-title="HP移転" data-desc="tumblrからHP移転しました．（PC用にレイアウトしています．．．）">
+          <img src="images/news/2024-field.svg" alt="HP移転">
+          <div class="grid-item-overlay">
+            <time>2020.06.30</time>
+            <h2>HP移転</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="18" data-src="images/news/2024-komatsu.svg" data-date="2020.02.27–03.01" data-title="水惑星スクール" data-desc="水惑星スクール＠熊本に参加しました．">
+          <img src="images/news/2024-komatsu.svg" alt="水惑星スクール">
+          <div class="grid-item-overlay">
+            <time>2020.02.27–03.01</time>
+            <h2>水惑星スクール</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="19" data-src="images/news/2024-mars.svg" data-date="2019.12.07–09" data-title="堆積学フィールドセミナー" data-desc="堆積学フィールドセミナー2019＠銚子に参加しました．">
+          <img src="images/news/2024-mars.svg" alt="堆積学フィールドセミナー">
+          <div class="grid-item-overlay">
+            <time>2019.12.07–09</time>
+            <h2>堆積学フィールドセミナー</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="20" data-src="images/news/2024-field.svg" data-date="2019.07.10" data-title="JpGU2019 学生優秀発表賞" data-desc="JpGU2019大気水圏科学セッションでの口頭発表が学生優秀発表賞に選ばれました．">
+          <img src="images/news/2024-field.svg" alt="JpGU2019 学生優秀発表賞">
+          <div class="grid-item-overlay">
+            <time>2019.07.10</time>
+            <h2>JpGU2019 学生優秀発表賞</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="21" data-src="images/news/2024-komatsu.svg" data-date="2019.06.04–16" data-title="アメリカ ユタ州調査" data-desc="風成層調査とGreen river Fmの調査（先輩の研究）のため，アメリカ, ユタ州に行きました．">
+          <img src="images/news/2024-komatsu.svg" alt="アメリカ ユタ州調査">
+          <div class="grid-item-overlay">
+            <time>2019.06.04–16</time>
+            <h2>アメリカ ユタ州調査</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="22" data-src="images/news/2024-mars.svg" data-date="2019.05.29" data-title="JpGU2019 口頭発表" data-desc="JpGU2019参加しました．古気候・古海洋変動セッションで口頭発表しました．">
+          <img src="images/news/2024-mars.svg" alt="JpGU2019 口頭発表">
+          <div class="grid-item-overlay">
+            <time>2019.05.29</time>
+            <h2>JpGU2019 口頭発表</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="23" data-src="images/news/2024-field.svg" data-date="2019.04.03" data-title="東工大地球生命研究所へ配属" data-desc="所属が変わりました．東工大地球生命研究所関根研究室に配属されました．">
+          <img src="images/news/2024-field.svg" alt="東工大地球生命研究所へ配属">
+          <div class="grid-item-overlay">
+            <time>2019.04.03</time>
+            <h2>東工大地球生命研究所へ配属</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="24" data-src="images/news/2024-komatsu.svg" data-date="2019.03.22" data-title="理学部長賞を受賞" data-desc="理学部長賞を受賞しました．">
+          <img src="images/news/2024-komatsu.svg" alt="理学部長賞を受賞">
+          <div class="grid-item-overlay">
+            <time>2019.03.22</time>
+            <h2>理学部長賞を受賞</h2>
+          </div>
+        </div>
+
+        <div class="grid-item" data-index="25" data-src="images/news/2024-mars.svg" data-date="2019.03.01" data-title="個人HP開設" data-desc="個人HP開設してみました．まだよく分かっていないので，徐々に改善します．備忘録的に，色々投稿します．">
+          <img src="images/news/2024-mars.svg" alt="個人HP開設">
+          <div class="grid-item-overlay">
+            <time>2019.03.01</time>
+            <h2>個人HP開設</h2>
+          </div>
+        </div>
+
       </div>
     </main>
 
@@ -286,9 +476,11 @@
         const item = items[currentIndex];
         
         modalImg.src = item.getAttribute('data-src');
-        modalDate.textContent = item.getAttribute('data-date');
-        modalTitle.textContent = item.getAttribute('data-title');
-        modalDesc.textContent = item.getAttribute('data-desc');
+        
+        // innerHTML に変更し、<br> や <a> タグを有効化
+        modalDate.innerHTML = item.getAttribute('data-date');
+        modalTitle.innerHTML = item.getAttribute('data-title');
+        modalDesc.innerHTML = item.getAttribute('data-desc');
         
         modal.style.display = 'flex';
       }
