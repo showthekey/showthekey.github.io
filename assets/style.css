@@ -58,6 +58,7 @@ img {
 .header-row {
   display: flex;
   align-items: center;
+  justify-content: center; /* ▼これを追加：全体を中央寄せにする▼ */
   gap: var(--header-gap);
 }
 
@@ -78,7 +79,7 @@ img {
 
 nav {
   display: flex;
-  flex: 1;
+  /* flex: 1; を削除しました（空間を埋めずに、必要な幅だけにするため） */
   align-items: center;
   justify-content: flex-start;
   gap: var(--nav-gap);
