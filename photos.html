@@ -197,27 +197,27 @@
      
       <div class="photo-grid">
         
-        <div class="grid-item" data-index="0" data-src="images/photos/fieldwork-01.svg" data-date="2024" data-title="Fieldwork 01" data-desc="2024年に行われたフィールド調査の際の記録写真です。ここに詳細な説明文を入力できます。">
+        <div class="grid-item" data-src="images/photos/fieldwork-01.svg" data-date="2024" data-title="Fieldwork 01" data-desc="2024年に行われたフィールド調査の際の記録写真です。ここに詳細な説明文を入力できます。">
           <img src="images/photos/fieldwork-01.svg" alt="Fieldwork 01">
         </div>
         
-        <div class="grid-item" data-index="1" data-src="images/photos/fieldwork-02.svg" data-date="2023" data-title="Fieldwork 02" data-desc="2023年のフィールドワークの記録です。地質構造の観察を行いました。">
+        <div class="grid-item" data-src="images/photos/fieldwork-02.svg" data-date="2023" data-title="Fieldwork 02" data-desc="2023年のフィールドワークの記録です。地質構造の観察を行いました。">
           <img src="images/photos/fieldwork-02.svg" alt="Fieldwork 02">
         </div>
         
-        <div class="grid-item" data-index="2" data-src="images/photos/fieldwork-03.svg" data-date="2023" data-title="Fieldwork 03" data-desc="露頭の観察スケッチやサンプリングを行っている様子です。">
+        <div class="grid-item" data-src="images/photos/fieldwork-03.svg" data-date="2023" data-title="Fieldwork 03" data-desc="露頭の観察スケッチやサンプリングを行っている様子です。">
           <img src="images/photos/fieldwork-03.svg" alt="Fieldwork 03">
         </div>
         
-        <div class="grid-item" data-index="3" data-src="images/photos/fieldwork-04.svg" data-date="2022" data-title="Fieldwork 04" data-desc="2022年の調査時の写真です。広大な地形スケールを体感しました。">
+        <div class="grid-item" data-src="images/photos/fieldwork-04.svg" data-date="2022" data-title="Fieldwork 04" data-desc="2022年の調査時の写真です。広大な地形スケールを体感しました。">
           <img src="images/photos/fieldwork-04.svg" alt="Fieldwork 04">
         </div>
         
-        <div class="grid-item" data-index="4" data-src="images/photos/fieldwork-05.svg" data-date="2022" data-title="Fieldwork 05" data-desc="研究室のメンバーとともに進めた現地地質調査の様子です。">
+        <div class="grid-item" data-src="images/photos/fieldwork-05.svg" data-date="2022" data-title="Fieldwork 05" data-desc="研究室のメンバーとともに進めた現地地質調査の様子です。">
           <img src="images/photos/fieldwork-05.svg" alt="Fieldwork 05">
         </div>
         
-        <div class="grid-item" data-index="5" data-src="images/photos/fieldwork-06.svg" data-date="2021" data-title="Fieldwork 06" data-desc="2021年の日常および研究活動初期のフィールドノートの記録写真です。">
+        <div class="grid-item" data-src="images/photos/fieldwork-06.svg" data-date="2021" data-title="Fieldwork 06" data-desc="2021年の日常および研究活動初期のフィールドノートの記録写真です。">
           <img src="images/photos/fieldwork-06.svg" alt="Fieldwork 06">
         </div>
         
@@ -268,9 +268,10 @@
         modal.style.display = 'flex';
       }
 
-      items.forEach(item => {
+      // ▼自動ナンバリングの導入箇所：HTMLのdata-index属性ではなく、JavaScriptの要素順(index)を利用します▼
+      items.forEach((item, index) => {
         item.addEventListener('click', () => {
-          openModal(item.getAttribute('data-index'));
+          openModal(index);
         });
       });
 
