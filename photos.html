@@ -61,52 +61,51 @@
       }
       .modal-wrapper {
         display: flex;
+        flex-direction: column; /* ▼変更：画像を上、テキストを下にする縦並び設定▼ */
         width: min(90% - 40px, 980px);
-        height: 75vh;
+        height: 85vh;
         background: #fff;
         position: relative;
         align-items: center;
       }
-      .modal-text-side {
-        flex: 1;
-        padding: 40px;
-        max-width: 380px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      .modal-text-side time {
-        color: var(--pink);
-        font-size: 12px;
-        letter-spacing: .07em;
-        margin-bottom: 10px;
-        display: block;
-      }
-      .modal-text-side h2 {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 15px;
-        line-height: 1.4;
-        margin-top: 0;
-      }
-      .modal-text-side p {
-        font-size: 13px;
-        color: var(--ink);
-        line-height: 1.6;
-        margin: 0;
-      }
       .modal-image-side {
-        flex: 1.5;
-        height: 100%;
+        width: 100%;
+        flex: 1; /* ▼変更：残りの高さをすべて画像エリアに割り当てる▼ */
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 40px 20px 10px; /* ▼変更：画像周りの余白調整▼ */
       }
       .modal-image-side img {
         max-width: 100%;
         max-height: 100%;
         object-fit: contain; /* 画像を元の比率で全体表示 */
+      }
+      .modal-text-side {
+        width: 100%;
+        padding: 10px 40px 40px; /* ▼変更：テキスト周りの余白調整▼ */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* ▼変更：中央揃え▼ */
+        justify-content: flex-start;
+        text-align: center; /* ▼変更：テキストを中央揃え▼ */
+      }
+      .modal-text-side time {
+        color: var(--pink);
+        font-size: 13px;
+        letter-spacing: .07em;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .modal-text-side h2 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 0;
+        line-height: 1.4;
+        margin-top: 0;
+      }
+      .modal-text-side p {
+        display: none; /* ▼変更：説明文を非表示にする▼ */
       }
       .modal-close-btn {
         position: absolute;
@@ -144,16 +143,15 @@
           grid-template-columns: repeat(2, 1fr);
         }
         .modal-wrapper {
-          flex-direction: column-reverse;
           height: 85vh;
           width: 90%;
         }
         .modal-text-side {
           max-width: 100%;
-          padding: 24px;
+          padding: 10px 24px 30px;
         }
         .modal-image-side {
-          padding: 16px;
+          padding: 30px 16px 10px;
           width: 100%;
         }
         .modal-arrow-left { left: -40px; }
@@ -234,14 +232,17 @@
         <div class="modal-arrow-btn modal-arrow-left">&#10094;</div>
         <div class="modal-arrow-btn modal-arrow-right">&#10095;</div>
         
+        <!-- ▼変更：画像セクションをテキストより上に配置▼ -->
+        <div class="modal-image-side">
+          <img id="modal-img" src="" alt="">
+        </div>
+        
+        <!-- ▼変更：テキストセクションを画像の下に配置▼ -->
         <div class="modal-text-side">
           <time id="modal-date"></time>
           <h2 id="modal-title"></h2>
+          <!-- エラー防止のためp要素は残し、CSSで非表示にしています -->
           <p id="modal-desc"></p>
-        </div>
-        
-        <div class="modal-image-side">
-          <img id="modal-img" src="" alt="">
         </div>
       </div>
     </div>
