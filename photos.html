@@ -15,15 +15,11 @@
         margin: 0 auto;
       }
 
-
       /* ▼4列の正方形グリッド設定▼ */
       .news-grid, .photo-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4列に変更 */
-        
-        /* 縦横の余白を現在の半分（20px -> 10px）に縮小 */
+        grid-template-columns: repeat(4, 1fr);
         gap: 10px 10px; 
-        
         margin-top: 40px;
       }
       
@@ -31,8 +27,8 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 写真が少し浮き出るような影を追加 */
-        border-radius: 2px; /* 影を自然に見せるためにごくわずかな角丸を追加 */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
+        border-radius: 2px; 
       }
       .grid-item img {
         width: 100%;
@@ -61,40 +57,45 @@
       }
       .modal-wrapper {
         display: flex;
-        flex-direction: column; /* ▼変更：画像を上、テキストを下にする縦並び設定▼ */
+        flex-direction: column; /* 縦並び */
         width: min(90% - 40px, 980px);
-        height: 85vh;
+        height: 75vh; /* 元のコードと同じ高さに戻しました */
         background: #fff;
         position: relative;
         align-items: center;
       }
+      
+      /* ▼画像側の設定▼ */
       .modal-image-side {
         width: 100%;
-        flex: 1; /* ▼変更：残りの高さをすべて画像エリアに割り当てる▼ */
+        flex: 1; 
+        min-height: 0; /* 重要：画像が大きくなりすぎて文字を押し出さないための設定 */
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 40px 20px 10px; /* ▼変更：画像周りの余白調整▼ */
+        padding: 40px 20px 15px; 
       }
       .modal-image-side img {
         max-width: 100%;
         max-height: 100%;
-        object-fit: contain; /* 画像を元の比率で全体表示 */
+        object-fit: contain; 
       }
+      
+      /* ▼テキスト側の設定▼ */
       .modal-text-side {
         width: 100%;
-        padding: 10px 40px 40px; /* ▼変更：テキスト周りの余白調整▼ */
+        flex: none; /* テキストの高さは圧縮させない */
+        padding: 5px 40px 30px; 
         display: flex;
         flex-direction: column;
-        align-items: center; /* ▼変更：中央揃え▼ */
-        justify-content: flex-start;
-        text-align: center; /* ▼変更：テキストを中央揃え▼ */
+        align-items: center; /* 中央揃え */
+        text-align: center;
       }
       .modal-text-side time {
         color: var(--pink);
         font-size: 13px;
         letter-spacing: .07em;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
         display: block;
       }
       .modal-text-side h2 {
@@ -105,8 +106,9 @@
         margin-top: 0;
       }
       .modal-text-side p {
-        display: none; /* ▼変更：説明文を非表示にする▼ */
+        display: none; /* 説明文を非表示 */
       }
+      
       .modal-close-btn {
         position: absolute;
         top: -40px;
@@ -143,16 +145,14 @@
           grid-template-columns: repeat(2, 1fr);
         }
         .modal-wrapper {
-          height: 85vh;
+          height: 80vh;
           width: 90%;
         }
         .modal-text-side {
-          max-width: 100%;
-          padding: 10px 24px 30px;
+          padding: 10px 20px 25px;
         }
         .modal-image-side {
           padding: 30px 16px 10px;
-          width: 100%;
         }
         .modal-arrow-left { left: -40px; }
         .modal-arrow-right { right: -40px; }
@@ -194,7 +194,6 @@
      
       <div class="photo-grid">
 
-
         <div class="grid-item" data-src="images/photos/fieldwork-04.svg" data-date="2024" data-title="Fieldwork 0A" data-desc="これが最初に来るべき">
           <img src="images/photos/fieldwork-01.svg" alt="Fieldwork 01">
         </div>
@@ -232,16 +231,14 @@
         <div class="modal-arrow-btn modal-arrow-left">&#10094;</div>
         <div class="modal-arrow-btn modal-arrow-right">&#10095;</div>
         
-        <!-- ▼変更：画像セクションをテキストより上に配置▼ -->
         <div class="modal-image-side">
           <img id="modal-img" src="" alt="">
         </div>
         
-        <!-- ▼変更：テキストセクションを画像の下に配置▼ -->
         <div class="modal-text-side">
           <time id="modal-date"></time>
           <h2 id="modal-title"></h2>
-          <!-- エラー防止のためp要素は残し、CSSで非表示にしています -->
+          <!-- pタグは残し、CSSで非表示にしています -->
           <p id="modal-desc"></p>
         </div>
       </div>
@@ -273,7 +270,6 @@
         modal.style.display = 'flex';
       }
 
-      // ▼自動ナンバリングの導入箇所：HTMLのdata-index属性ではなく、JavaScriptの要素順(index)を利用します▼
       items.forEach((item, index) => {
         item.addEventListener('click', () => {
           openModal(index);
@@ -296,7 +292,6 @@
         openModal(nextIndex);
       });
 
-      // 背景クリックで閉じる
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
           modal.style.display = 'none';
